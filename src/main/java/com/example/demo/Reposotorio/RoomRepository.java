@@ -15,27 +15,32 @@ import org.springframework.stereotype.Repository;
  *
  * @author HP
  */
-
 @Repository
 public class RoomRepository {
+
     @Autowired
-
- private RoomInterface RoomCrudRepository;
-
+    
+    private RoomInterface RoomCrudRepository;
+    
     public List<Room> getAll() {
         return (List<Room>) RoomCrudRepository.findAll();
-
+        
     }
-
+    
     public Optional<Room> getRoom(int id) {
-
+        
         return RoomCrudRepository.findById(id);
     }
-
+    
     public Room save(Room room) {
-
+        
         return RoomCrudRepository.save(room);
+        
+    }
 
+    public void delete(Room room) {
+        
+        RoomCrudRepository.delete(room);
     }
     
 }

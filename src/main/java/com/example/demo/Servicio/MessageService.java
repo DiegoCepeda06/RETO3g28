@@ -15,10 +15,9 @@ import org.springframework.stereotype.Service;
  *
  * @author HP
  */
-
 @Service
 public class MessageService {
-   
+
     @Autowired
     private MessageRepository messageRepository;
 
@@ -34,7 +33,7 @@ public class MessageService {
     }
 
     public Message save(Message message) {
-        if (message.getIdMessage()== null) {
+        if (message.getIdMessage() == null) {
             return messageRepository.save(message);
         } else {
             Optional<Message> client1 = messageRepository.getMessage(message.getIdMessage());
@@ -45,5 +44,30 @@ public class MessageService {
             }
         }
     }
- 
+
+    public Message update(Message message) {
+        if (message.getIdMessage() != null) {
+            Optional<Message> e = messageRepository.getMessage(message.getIdMessage());
+            if (!e.isEmpty()) {
+                if (message.getMessageText() != null) {
+                    e.get().setMessageText(message.getMessageText());
+                }
+                messageRepository.save(e.get());
+                return e.get();
+            } else {
+                return message;
+            }
+        } else {
+            return message;
+        }
+    }
+
+    public boolean deleteMessage(int id) {
+        Boolean d = getMessage(id).map(message -> {
+            messageRepository.delete(message);
+            return true;
+        }).orElse(false);
+        return d;
+    }
+
 }

@@ -38,4 +38,12 @@ public class CategoryRepository {
 
     }
 
+    public void delete(Category category) {
+        categoryCrudRepository.delete(category);
+
+    }
+
+
+
+
 }
