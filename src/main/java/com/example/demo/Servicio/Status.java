@@ -10,11 +10,11 @@ package com.example.demo.Servicio;
  */
 public class Status {
 private int completed;
-private int canceled;
+private int cancelled;
 
-    public Status(int completed, int canceled) {
+    public Status(int completed, int cancelled) {
         this.completed = completed;
-        this.canceled = canceled;
+        this.cancelled = cancelled;
     }
 
     public int getCompleted() {
@@ -25,12 +25,12 @@ private int canceled;
         this.completed = completed;
     }
 
-    public int getCanceled() {
-        return canceled;
+    public int getCancelled() {
+        return cancelled;
     }
 
-    public void setCanceled(int canceled) {
-        this.canceled = canceled;
+    public void setCancelled(int cancelled) {
+        this.cancelled = cancelled;
     }
 
 
